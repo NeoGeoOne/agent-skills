@@ -6,9 +6,9 @@ Checks, per top-level skill folder:
   `description` 1-1024 and `compatibility` 1-500 characters; values that YAML would reject or misread;
 - SKILL.md at most 500 lines;
 - every `references/…`, `scripts/…` or `assets/…` path named in SKILL.md or a reference file exists;
-- bundled Python scripts parse with Python 3.9 grammar (best effort; CI also runs them on Python 3.9).
+- bundled Python scripts parse with Python 3.10 grammar (best effort; CI also runs them on Python 3.10).
 If PyYAML is installed (CI installs it), the frontmatter is also loaded with it and compared.
-Standard library only otherwise; runs on Python 3.9+. Exit code 1 on any problem.
+Standard library only otherwise; runs on Python 3.10+. Exit code 1 on any problem.
 """
 import ast
 import pathlib
@@ -22,7 +22,7 @@ except ImportError:
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 NOT_SKILLS = {"tools"}
-MIN_PYTHON = (3, 9)
+MIN_PYTHON = (3, 10)
 MAX_LINES = 500
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 REF_RE = re.compile(r"(?:(?<=\./)|(?<![\w/.-]))((?:references|scripts|assets)/[\w./-]+\.\w+)")

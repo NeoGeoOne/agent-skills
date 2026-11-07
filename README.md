@@ -34,7 +34,7 @@ ln -s "$PWD/agent-skills/usgs-earthquake" ~/.claude/skills/usgs-earthquake
 ```
 
 The agent picks a skill up by its description; no further configuration is needed. The helper scripts need
-Python 3.9 or newer.
+Python 3.10 or newer.
 
 ## Validation
 
@@ -44,7 +44,7 @@ python3 tools/validate.py
 
 Checks every skill against the specification (name, description and compatibility limits, name matches the
 folder, frontmatter that YAML would misread), that every file named in a `SKILL.md` or reference file exists,
-and that every script parses as Python 3.9. CI runs the same check and also runs every script on Python 3.9.
+and that every script parses as Python 3.10. CI runs the same check and also runs every script on Python 3.10.
 
 ## Contributing
 
