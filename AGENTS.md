@@ -6,7 +6,7 @@ skills and how to install them; this file holds only what is easy to get wrong.
 ## Commands
 
 ```bash
-python3 tools/validate.py                         # spec limits, referenced files, Python 3.9 syntax (CI runs it)
+python3 tools/validate.py                         # spec limits, referenced files, Python 3.10 syntax (CI runs it)
 python3 usgs-earthquake/scripts/usgs_quake.py -h  # every script documents its options with -h
 ```
 
@@ -24,10 +24,10 @@ python3 usgs-earthquake/scripts/usgs_quake.py -h  # every script documents its o
   its limits. The `description` says what the skill does and when to use it. Keep `SKILL.md` under 500 lines
   and move detail into `references/`.
 - Skills stay host-neutral: describe capabilities ("the host's web search tool"), never a vendor's tool name.
-- Scripts run on Python 3.9 or newer and use the standard library only. They print errors to stderr, exit
+- Scripts run on Python 3.10 or newer and use the standard library only. They print errors to stderr, exit
   non-zero on failure and work without an API key on the default path. If a paid tier needs a key, read it from
   an argument at run time; never store it.
-- The validator only parses scripts; CI also compiles them and runs `-h` on Python 3.9. After changing a
+- The validator only parses scripts; CI also compiles them and runs `-h` on Python 3.10. After changing a
   script, run the examples from its `SKILL.md` (against the live API where the script calls one) and include
   the command and its output in the pull request.
 - Keep each `SKILL.md` in step with its script: every flag in an example exists in the script.
