@@ -1,6 +1,6 @@
 # agent-skills
 
-[![Validate](https://github.com/NeoGeoOne/agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/NeoGeoOne/agent-skills/actions/workflows/validate.yml)
+[![Validate](https://github.com/starsoules/agent-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/starsoules/agent-skills/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Skills for AI coding agents that replace answers from memory with live, verifiable data. Each skill follows the
@@ -28,7 +28,7 @@ Copy or symlink a skill folder into your agent's skills directory:
 | Other Agent Skills hosts | `~/.agents/skills/<name>/` | `.agents/skills/<name>/` |
 
 ```bash
-git clone https://github.com/NeoGeoOne/agent-skills.git
+git clone https://github.com/starsoules/agent-skills.git
 mkdir -p ~/.claude/skills
 ln -s "$PWD/agent-skills/usgs-earthquake" ~/.claude/skills/usgs-earthquake
 ```
@@ -48,7 +48,7 @@ and that every script parses as Python 3.10. CI runs the same check and also run
 
 ## Contributing
 
-Bug reports and ideas are welcome as [issues](https://github.com/NeoGeoOne/agent-skills/issues/new/choose).
+Bug reports and ideas are welcome as [issues](https://github.com/starsoules/agent-skills/issues/new/choose).
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Security issues: see
 [SECURITY.md](SECURITY.md).
 

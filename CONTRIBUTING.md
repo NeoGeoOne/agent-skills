@@ -4,7 +4,7 @@ Thanks for your interest in agent-skills.
 
 ## Issues
 
-Bug reports and ideas are welcome. Use one of the [issue forms](https://github.com/NeoGeoOne/agent-skills/issues/new/choose) and include
+Bug reports and ideas are welcome. Use one of the [issue forms](https://github.com/starsoules/agent-skills/issues/new/choose) and include
 the steps to reproduce, what you expected and what happened.
 
 ## Pull requests
