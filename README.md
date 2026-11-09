@@ -12,14 +12,50 @@ APIs that need no key; all scripts use the Python standard library only.
 
 | Skill | What it gives the agent | Data sources |
 |---|---|---|
-| [`open-meteo`](open-meteo/) | Weather forecasts and history, air quality and pollen, marine conditions, climate projections, river floods, ensembles, geocoding and elevation | [Open-Meteo](https://open-meteo.com) |
-| [`research-verifier`](research-verifier/) | Tiered web research with source grading, a verification pass and a reliability label plus citation for every core claim | the host's own search and fetch tools |
-| [`space-weather-astronomy`](space-weather-astronomy/) | Planet, Moon, comet and spacecraft positions, rise and set times, asteroid close approaches, geomagnetic storms and aurora forecasts | NASA JPL Horizons and CNEOS, NOAA SWPC |
-| [`usgs-earthquake`](usgs-earthquake/) | Earthquake records for any place and time: magnitude, depth, aftershocks, tsunami flags, felt reports, ShakeMap and PAGER | USGS Earthquake Hazards Program |
+| [`open-meteo`](skills/open-meteo/) | Weather forecasts and history, air quality and pollen, marine conditions, climate projections, river floods, ensembles, geocoding and elevation | [Open-Meteo](https://open-meteo.com) |
+| [`research-verifier`](skills/research-verifier/) | Tiered web research with source grading, a verification pass and a reliability label plus citation for every core claim | the host's own search and fetch tools |
+| [`space-weather-astronomy`](skills/space-weather-astronomy/) | Planet, Moon, comet and spacecraft positions, rise and set times, asteroid close approaches, geomagnetic storms and aurora forecasts | NASA JPL Horizons and CNEOS, NOAA SWPC |
+| [`usgs-earthquake`](skills/usgs-earthquake/) | Earthquake records for any place and time: magnitude, depth, aftershocks, tsunami flags, felt reports, ShakeMap and PAGER | USGS Earthquake Hazards Program |
+
+Skills that drive a larger tool live in that tool's repository, so the skill and the code it runs change
+together:
+
+| Skill | Repository | What it gives the agent |
+|---|---|---|
+| [`flarum2-design-ops`](https://github.com/starsoules/flarum2-ops/tree/main/skills/flarum2-design-ops) | [flarum2-ops](https://github.com/starsoules/flarum2-ops) | Flarum 2 forum design-sets and admin API through a bundled engine and MCP server. Needs the repository's setup; see its README |
 
 ## Installation
 
-Copy or symlink a skill folder into your agent's skills directory:
+### Claude Code
+
+This repository is a plugin marketplace named `starsoules`; every skill is its own plugin. Install one in a
+session (Claude Code 2.1.275 or later):
+
+```text
+/plugin install open-meteo --marketplace starsoules/agent-skills
+/plugin install research-verifier --marketplace starsoules/agent-skills
+/plugin install space-weather-astronomy --marketplace starsoules/agent-skills
+/plugin install usgs-earthquake --marketplace starsoules/agent-skills
+```
+
+Or add the marketplace once and pick from the list: `/plugin marketplace add starsoules/agent-skills`, then
+`/plugin`. Plugin skills are named `<plugin>:<skill>`, for example `usgs-earthquake:usgs-earthquake`. Updates
+follow this repository's commits: `/plugin marketplace update starsoules`, or turn on auto-update for the
+marketplace in `/plugin`.
+
+### Other agents
+
+With the [skills CLI](https://github.com/vercel-labs/skills) (Node.js 22.20 or later), which supports OpenCode,
+Codex, Cursor, Claude Code and many more:
+
+```bash
+npx skills add starsoules/agent-skills                          # choose skills and agents interactively
+npx skills add starsoules/agent-skills --skill usgs-earthquake  # one skill
+```
+
+### Manually
+
+Copy or symlink a folder from `skills/` into your agent's skills directory:
 
 | Agent | Personal (all projects) | Per project |
 |---|---|---|
@@ -30,7 +66,7 @@ Copy or symlink a skill folder into your agent's skills directory:
 ```bash
 git clone https://github.com/starsoules/agent-skills.git
 mkdir -p ~/.claude/skills
-ln -s "$PWD/agent-skills/usgs-earthquake" ~/.claude/skills/usgs-earthquake
+ln -s "$PWD/agent-skills/skills/usgs-earthquake" ~/.claude/skills/usgs-earthquake
 ```
 
 The agent picks a skill up by its description; no further configuration is needed. The helper scripts need
@@ -42,9 +78,10 @@ Python 3.10 or newer.
 python3 tools/validate.py
 ```
 
-Checks every skill against the specification (name, description and compatibility limits, name matches the
-folder, frontmatter that YAML would misread), that every file named in a `SKILL.md` or reference file exists,
-and that every script parses as Python 3.10. CI runs the same check and also runs every script on Python 3.10.
+Checks every skill in `skills/` against the specification (name, description and compatibility limits, name
+matches the folder, frontmatter that YAML would misread), that every file named in a `SKILL.md` or reference
+file exists, and that every script parses as Python 3.10. CI runs the same check, runs every script on Python
+3.10 and validates the marketplace with `claude plugin validate . --strict`.
 
 ## Contributing
 

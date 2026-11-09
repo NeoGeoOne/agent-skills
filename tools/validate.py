@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate every skill in this repository against the Agent Skills specification.
 
-Checks, per top-level skill folder:
+Checks, per skill folder in `skills/`:
 - frontmatter (https://agentskills.io/specification): `name` format and length, equal to the folder;
   `description` 1-1024 and `compatibility` 1-500 characters; values that YAML would reject or misread;
 - SKILL.md at most 500 lines;
@@ -20,8 +20,7 @@ try:
 except ImportError:
     yaml = None
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-NOT_SKILLS = {"tools"}
+SKILLS_DIR = pathlib.Path(__file__).resolve().parent.parent / "skills"
 MIN_PYTHON = (3, 10)
 MAX_LINES = 500
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -152,7 +151,7 @@ def check(skill):
 
 
 def main():
-    folders = sorted(p for p in ROOT.iterdir() if p.is_dir() and not p.name.startswith(".") and p.name not in NOT_SKILLS)
+    folders = sorted(p for p in SKILLS_DIR.iterdir() if p.is_dir() and not p.name.startswith(".")) if SKILLS_DIR.is_dir() else []
     if not folders:
         print("no skills found")
         return 1

@@ -1,0 +1,98 @@
+{
+  "name": "starsoules",
+  "description": "Agent skills that replace answers from memory with live, verifiable data.",
+  "owner": {
+    "name": "starsoules",
+    "url": "https://github.com/starsoules"
+  },
+  "plugins": [
+    {
+      "name": "open-meteo",
+      "source": "./",
+      "description": "Weather forecasts and history, air quality and pollen, marine conditions, climate projections, river floods, ensembles, geocoding and elevation from Open-Meteo. No API key.",
+      "skills": [
+        "./skills/open-meteo"
+      ],
+      "author": {
+        "name": "starsoules",
+        "url": "https://github.com/starsoules"
+      },
+      "homepage": "https://github.com/starsoules/agent-skills/tree/main/skills/open-meteo",
+      "repository": "https://github.com/starsoules/agent-skills",
+      "license": "MIT",
+      "category": "data",
+      "keywords": [
+        "weather",
+        "air-quality",
+        "climate",
+        "open-meteo"
+      ]
+    },
+    {
+      "name": "research-verifier",
+      "source": "./",
+      "description": "Tiered web research with source grading, a verification pass and a reliability label plus citation for every core claim.",
+      "skills": [
+        "./skills/research-verifier"
+      ],
+      "author": {
+        "name": "starsoules",
+        "url": "https://github.com/starsoules"
+      },
+      "homepage": "https://github.com/starsoules/agent-skills/tree/main/skills/research-verifier",
+      "repository": "https://github.com/starsoules/agent-skills",
+      "license": "MIT",
+      "category": "research",
+      "keywords": [
+        "research",
+        "fact-checking",
+        "citations",
+        "sources"
+      ]
+    },
+    {
+      "name": "space-weather-astronomy",
+      "source": "./",
+      "description": "Planet, Moon, comet and spacecraft positions, rise and set times, asteroid close approaches, geomagnetic storms and aurora forecasts from NASA JPL and NOAA SWPC. No API key.",
+      "skills": [
+        "./skills/space-weather-astronomy"
+      ],
+      "author": {
+        "name": "starsoules",
+        "url": "https://github.com/starsoules"
+      },
+      "homepage": "https://github.com/starsoules/agent-skills/tree/main/skills/space-weather-astronomy",
+      "repository": "https://github.com/starsoules/agent-skills",
+      "license": "MIT",
+      "category": "data",
+      "keywords": [
+        "astronomy",
+        "space-weather",
+        "aurora",
+        "nasa"
+      ]
+    },
+    {
+      "name": "usgs-earthquake",
+      "source": "./",
+      "description": "Earthquake records for any place and time: magnitude, depth, aftershocks, tsunami flags, felt reports, ShakeMap and PAGER from the USGS. No API key.",
+      "skills": [
+        "./skills/usgs-earthquake"
+      ],
+      "author": {
+        "name": "starsoules",
+        "url": "https://github.com/starsoules"
+      },
+      "homepage": "https://github.com/starsoules/agent-skills/tree/main/skills/usgs-earthquake",
+      "repository": "https://github.com/starsoules/agent-skills",
+      "license": "MIT",
+      "category": "data",
+      "keywords": [
+        "earthquakes",
+        "usgs",
+        "geophysics",
+        "hazards"
+      ]
+    }
+  ]
+}
